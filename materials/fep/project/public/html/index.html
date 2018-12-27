@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <title>APP</title>
+    <link rel="stylesheet" href="/build/app.css">
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+    (function(g) {
+      function detectmob() {
+        if ( navigator.userAgent.match(/Android/i)
+          || navigator.userAgent.match(/webOS/i)
+          || navigator.userAgent.match(/iPhone/i)
+          || navigator.userAgent.match(/iPad/i)
+          || navigator.userAgent.match(/iPod/i)
+          || navigator.userAgent.match(/BlackBerry/i)
+          || navigator.userAgent.match(/Windows Phone/i)
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      g.ISMOBILE = detectmob() ? 'is-mobile' : '';
+    })(window);
+    </script>
+    <div class="app"></div>
+    <script src="/build/app.bundle.js"></script>
+  </body>
+</html>

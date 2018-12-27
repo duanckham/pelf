@@ -1,0 +1,10 @@
+version: "3.1"
+
+services:
+  dectime-web:
+    restart: always
+    build: ./app
+    container_name: app
+    network_mode: bridge
+    environment:
+      - VIRTUAL_HOST=mydomain.com,www.mydomain.com
