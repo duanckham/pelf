@@ -1,0 +1,13 @@
+{
+  "name": "pelf",
+  "version": "1.0.0",
+  "description": "PELF",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/duanckham/pelf.git"
+  },
+  "author": "Duanckham",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "dependencies": {}
+}
