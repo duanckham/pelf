@@ -3,8 +3,8 @@
   "version": "1.0.5",
   "description": "PELF",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/duanckham/pelf.git"
+    "type": "git",
+    "url": "https://github.com/duanckham/pelf.git"
   },
   "bin": {
     "pelf": "cli.js"
@@ -12,5 +12,7 @@
   "author": "Duanckham",
   "license": "Apache-2.0",
   "main": "cli.js",
-  "dependencies": {}
+  "dependencies": {
+    "copy-dir": "^0.4.0"
+  }
 }
