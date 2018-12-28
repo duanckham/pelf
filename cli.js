@@ -14,6 +14,8 @@ if (process.argv.length >= 3) {
   console.log(`    \`cd ${projectName}/app/project && npm run build-dev\`\n`);
   console.log('  - Start endpoints:');
   console.log(`    \`cd ${projectName}/app/project && npm run start-endpoints\`\n`);
+  console.log('  - Deploy on production:');
+  console.log(`    \`docker-compose build && docker-compose -f docker-compose.yml up --no-deps -d\`\n`);
   console.log('Have a good time.');
 } else {
   console.log('Please provide the folder name of the project.');
