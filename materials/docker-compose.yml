@@ -1,7 +1,7 @@
 version: "3.1"
 
 services:
-  dectime-web:
+  pelf:
     restart: always
     build: ./app
     container_name: app

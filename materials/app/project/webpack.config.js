@@ -9,36 +9,32 @@ let plugins = [
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NamedModulesPlugin(),
   new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify(environment),
-    },
+    'process.env': { NODE_ENV: JSON.stringify(environment) },
   }),
   new WriteFilePlugin(),
-  new ExtractTextPlugin({
-    filename: 'app.css'
-  })
+  new ExtractTextPlugin({ filename: 'app.css' }),
 ];
 
 let appConfig = [
   'babel-polyfill',
-  './web/app.js'
+  './web/app.js',
 ];
 
-if (environment !== 'production') {
+if (environment === 'production') {
+  plugins.push(new UglifyJSPlugin());
+} else {
   appConfig = [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http:\/\/localhost:9527',
-    'webpack/hot/only-dev-server'
-  ].concat(appConfig)
-} else {
-  plugins.push(new UglifyJSPlugin());
+    'webpack/hot/only-dev-server',
+  ].concat(appConfig);
 }
 
 module.exports = {
   resolve: {
     modules: [
       path.resolve(__dirname, 'web'),
-      'node_modules'
+      'node_modules',
     ]
   },
   entry: {
@@ -49,7 +45,7 @@ module.exports = {
     publicPath: path.resolve(__dirname, 'public'),
     hotUpdateChunkFilename: 'app.hot-update.js',
     hotUpdateMainFilename: 'app.hot-update.json',
-    filename: 'app.bundle.js'
+    filename: 'app.bundle.js',
   },
   devServer: {
     hot: false,
@@ -60,8 +56,8 @@ module.exports = {
     disableHostCheck: true,
     watchOptions: {
       aggregateTimeout: 1000,
-      poll: 1000
-    }
+      poll: 1000,
+    },
   },
   module: {
     loaders: [
@@ -70,18 +66,18 @@ module.exports = {
         exclude: /node_modules/,
         loaders: 'babel-loader',
         query: {
-          presets: ['es2015', 'react']
-        }
+          presets: ['es2015', 'react'],
+        },
       },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
         loaders: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
+          use: ['css-loader', 'sass-loader'],
+        }),
       }
-    ]
+    ],
   },
-  plugins: plugins
+  plugins: plugins,
 };
