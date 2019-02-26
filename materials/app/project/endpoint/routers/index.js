@@ -29,6 +29,7 @@ module.exports = app => {
   app.use('/api', api);
 
   app.get('*', (req, res) => {
+    res.type('html');
     return fs.createReadStream(`${__dirname}/../../public/html/index.html`).pipe(res);
   });
 };
