@@ -3,7 +3,6 @@ FROM debian:buster-20180625
 ENV PROJECT_NAME pelf
 ENV MODE production
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 8.12.0
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
@@ -15,18 +14,15 @@ RUN useradd -ms /bin/bash $PROJECT_NAME
 
 # Install dependencies
 RUN apt-get update -y
-RUN apt-get install -y apt-transport-https curl build-essential python git-core apt-transport-https
+RUN apt-get install -y apt-transport-https curl build-essential python git-core
 
 # Set the timezone.
 RUN echo "Asia/Shanghai" > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
 
 # Install `nvm`, `node`
-RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-RUN source $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y nodejs
 
 # Install `pm2`
 RUN npm install pm2 -g
