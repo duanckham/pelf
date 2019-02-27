@@ -30,6 +30,9 @@ WORKDIR /home/$PROJECT_NAME/project
 RUN npm install
 RUN npm run build-prd
 
+# Build
+WORKDIR /home/$PROJECT_NAME/project
+
 # Start
 CMD MODE=$MODE pm2 start app.json --no-daemon
 
