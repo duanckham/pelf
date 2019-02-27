@@ -2,9 +2,6 @@ FROM debian:buster-20180625
 
 ENV PROJECT_NAME pelf
 ENV MODE production
-ENV NVM_DIR /usr/local/nvm
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 # Point /bin/sh to /bin/bash
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
