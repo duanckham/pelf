@@ -14,7 +14,7 @@ RUN apt-get update -y
 RUN apt-get install -y apt-transport-https curl build-essential python git-core
 
 # Set the timezone.
-RUN echo "Asia/Shanghai" > /etc/timezone
+RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
 
 # Install `nvm`, `node`
