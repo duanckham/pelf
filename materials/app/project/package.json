@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "build-dev": "NODE_ENV=development ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --watch-poll",
-    "build-prd": "NODE_ENV=production ./node_modules/webpack/bin/webpack.js --progress"
+    "build-prd": "NODE_ENV=production ./node_modules/webpack/bin/webpack.js --progress",
+    "start-endpoints": "node endpoint/index.js"
   },
   "repository": {},
   "author": "your name",
