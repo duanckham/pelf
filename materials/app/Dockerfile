@@ -14,7 +14,7 @@ RUN apt-get update -y
 RUN apt-get install -y apt-transport-https curl build-essential python git-core
 
 # Set the timezone.
-RUN echo "Asia/Shanghai" > /etc/timezone
+RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
 
 # Install `nvm`, `node`
@@ -24,14 +24,16 @@ RUN apt-get install -y nodejs
 # Install `pm2`
 RUN npm install pm2 -g
 
-# Deploy and Build
-ADD project /home/$PROJECT_NAME/project
-WORKDIR /home/$PROJECT_NAME/project
+# Pre-install modules
+RUN mkdir /src
+WORKDIR /src
+COPY project/package.json /src
 RUN npm install
-RUN npm run build-prd
 
-# Build
-WORKDIR /home/$PROJECT_NAME/project
+# Deploy and Build
+ADD project /tmp/project
+RUN mv /tmp/project/* /src
+RUN npm run build-prd
 
 # Start
 CMD MODE=$MODE pm2 start app.json --no-daemon
