@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import MainComponent from 'components/index.main';
 import HeadComponent from 'components/index.head';
@@ -43,7 +43,9 @@ class IndexComponent extends React.Component {
       <div>
         <HeadComponent />
         <MainComponent ref={com => { this.main = com; }} history={history}>
-          <Route path="/" component={this.renderComponent(PageDefaultComponent)}/>
+          <Switch>
+            <Route path="/" component={this.renderComponent(PageDefaultComponent)} />
+          </Switch>
         </MainComponent>
         <FootComponent />
       </div>
@@ -53,14 +55,14 @@ class IndexComponent extends React.Component {
   renderComponent(Com) {
     return (req) => {
       let request = $.extend({ query: this.parseQuery(req.location.search) }, req);
-      return <Com request={request} history={this.history} loading={this.loading}/>;
+      return <Com request={request} history={this.history} loading={this.loading} />;
     };
   }
 
   render() {
     return (
       <BrowserRouter>
-        <Route render={this.renderRoute}/>
+        <Route render={this.renderRoute} />
       </BrowserRouter>
     );
   }

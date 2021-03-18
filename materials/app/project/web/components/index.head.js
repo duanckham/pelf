@@ -8,7 +8,7 @@ export default class IndexHeadComponent extends React.Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   render() {

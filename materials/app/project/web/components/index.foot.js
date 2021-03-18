@@ -8,7 +8,7 @@ export default class IndexFootComponent extends React.Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   render() {
