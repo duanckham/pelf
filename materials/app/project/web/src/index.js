@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import MainComponent from 'components/index.main';
-import HeadComponent from 'components/index.head';
-import FootComponent from 'components/index.foot';
-import PageDefaultComponent from 'components/pages/default';
+import MainComponent from 'src/index.main';
+import HeadComponent from 'src/index.head';
+import FootComponent from 'src/index.foot';
+import PageDefaultComponent from 'src/pages/default';
 
 class IndexComponent extends React.Component {
   constructor(props) {

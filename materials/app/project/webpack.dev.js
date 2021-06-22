@@ -1,8 +1,11 @@
 const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, './web/app.js'),
+  mode: 'development',
+  target: 'web',
+  entry: path.resolve(__dirname, './web/app.dev.js'),
   module: {
     rules: [
       {
@@ -31,9 +34,17 @@ module.exports = {
     path: path.resolve(__dirname, './public/build'),
     filename: 'bundle.js',
   },
-  optimization: {
-    minimizer: [
-      new TerserPlugin(),
-    ],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: './public/html/dev.html',
+    }),
+  ],
+  devServer: {
+    contentBase: path.resolve(__dirname, './public'),
+    port: 9527,
+    compress: true,
+    hot: true,
+    inline: true,
   },
 };

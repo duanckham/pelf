@@ -1,8 +1,10 @@
 {
-  "apps" : [{
-    "name": "pelf",
-    "script": "endpoint/index.js",
-    "error_file": "/var/log/pelf-err.log",
-    "out_file": "/var/log/pelf-out.log"
-  }]
+  "apps": [
+    {
+      "name": "app",
+      "script": "endpoint/index.js",
+      "error_file": "/var/log/app-err.log",
+      "out_file": "/var/log/app-out.log"
+    }
+  ]
 }

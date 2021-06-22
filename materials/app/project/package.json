@@ -1,11 +1,11 @@
 {
-  "name": "pelf-app",
+  "name": "app",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build-dev": "NODE_ENV=development ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --watch-poll",
-    "build-prd": "NODE_ENV=production ./node_modules/webpack/bin/webpack.js --progress",
-    "start-endpoints": "node endpoint/index.js"
+    "build-dev": "webpack serve --mode development --config ./webpack.dev.js --progress",
+    "build-prd": "webpack --mode production",
+    "start-endpoints": "MODE=development node endpoint/index.js"
   },
   "repository": {},
   "author": "your name",
@@ -17,32 +17,28 @@
     "morgan": "^1.9.1"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-transform-decorators-legacy": "^1.3.5",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "css-loader": "^0.28.11",
-    "extract-text-webpack-plugin": "^3.0.2",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
+    "html-webpack-plugin": "^5.3.1",
     "javascript-obfuscator": "^0.9.4",
     "node-sass": "^4.13.0",
     "react": "^17.0.1",
+    "react-content-loader": "^5.0.1",
     "react-dom": "^17.0.1",
     "react-hot-loader": "^4.13.0",
     "react-mixin": "^3.1.1",
     "react-router-dom": "^4.3.1",
     "react-timer-mixin": "^0.13.4",
-    "sass-loader": "^6.0.7",
-    "style-loader": "^0.19.1",
+    "sass": "^1.34.1",
+    "sass-loader": "^12.0.0",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.1.3",
     "tuntu": "^1.0.4",
-    "uglifyjs-webpack-plugin": "^1.3.0",
-    "webpack": "^3.12.0",
-    "webpack-dev-middleware": "^1.12.2",
-    "webpack-dev-server": "^2.11.5",
-    "webpack-hot-middleware": "^2.25.0",
-    "write-file-webpack-plugin": "^4.5.1"
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }

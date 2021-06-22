@@ -1,6 +1,6 @@
-FROM debian:buster-20180625
+FROM debian:latest
 
-ENV PROJECT_NAME pelf
+ENV PROJECT_NAME app
 ENV MODE production
 
 # Point /bin/sh to /bin/bash
@@ -18,7 +18,7 @@ RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shang
 RUN dpkg-reconfigure -f noninteractive tzdata
 
 # Install `nvm`, `node`
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_15.x | bash -
 RUN apt-get install -y nodejs
 
 # Install `pm2`
@@ -28,11 +28,12 @@ RUN npm install pm2 -g
 RUN mkdir /src
 WORKDIR /src
 COPY project/package.json /src
-RUN npm install
+RUN npm i
 
 # Deploy and Build
 ADD project /tmp/project
 RUN mv /tmp/project/* /src
+RUN mv /tmp/project/.babelrc /src/.babelrc
 RUN npm run build-prd
 
 # Start
