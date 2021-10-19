@@ -5,7 +5,7 @@
   "scripts": {
     "build-dev": "webpack serve --mode development --config ./webpack.dev.js --progress",
     "build-prd": "webpack --mode production",
-    "start-endpoints": "MODE=development node endpoint/index.js"
+    "start": "MODE=development node endpoint/index.js"
   },
   "repository": {},
   "author": "your name",
