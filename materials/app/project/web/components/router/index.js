@@ -35,7 +35,7 @@ export class Router extends React.Component {
   }
 
   renderComponent(Component) {
-    return (req) => {
+    return req => {
       return <Component
         request={$.extend({ query: this.parseQuery(req.location.search) }, req)}
         history={this.history}

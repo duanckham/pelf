@@ -41,11 +41,11 @@ module.exports = {
     }),
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, './public'),
+    static: path.resolve(__dirname, './public'),
     port: 9527,
     compress: true,
     hot: true,
-    inline: true,
+    liveReload: true,
     historyApiFallback: true,
   },
 };

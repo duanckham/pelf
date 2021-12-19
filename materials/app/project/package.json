@@ -23,8 +23,8 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
     "html-webpack-plugin": "^5.3.1",
-    "javascript-obfuscator": "^0.9.4",
-    "node-sass": "^4.13.0",
+    "javascript-obfuscator": "^0.6.2",
+    "node-sass": "^7.0.0",
     "react": "^17.0.1",
     "react-content-loader": "^5.0.1",
     "react-dom": "^17.0.1",
@@ -39,6 +39,6 @@
     "tuntu": "^1.0.4",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^4.6.0"
   }
 }
