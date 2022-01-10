@@ -31,7 +31,6 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, './public/build'),
     filename: 'bundle.js',
   },
   plugins: [
@@ -41,8 +40,20 @@ module.exports = {
     }),
   ],
   devServer: {
-    static: path.resolve(__dirname, './public'),
     port: 9527,
+    onBeforeSetupMiddleware: server => {
+      if (!server) {
+        throw new Error('webpack-dev-server is not defined');
+      }
+
+      server.app.use((req, res, next) => {
+        if (/\/[^\/]+\/bundle\.js/.test(req.url)) {
+          return res.redirect('/bundle.js');
+        }
+
+        next();
+      });
+    },
     compress: true,
     hot: true,
     liveReload: true,
