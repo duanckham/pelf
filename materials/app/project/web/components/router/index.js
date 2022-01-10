@@ -29,7 +29,7 @@ export class Router extends React.Component {
 
     return (
       <Switch>
-        <Route path='/' component={this.renderComponent(Home)} />
+        <Route path="/" component={this.renderComponent(Home)} />
       </Switch>
     );
   }
